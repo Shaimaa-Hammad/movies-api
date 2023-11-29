@@ -37,7 +37,10 @@ app.use('/api/watchlist', watchlistRouter);
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(process.env.DB_URL)
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.DB_URL, () => {
+    console.log("connected successfully!");
+});
 
 /**
  * Export.
